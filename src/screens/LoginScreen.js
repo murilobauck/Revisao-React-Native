@@ -1,96 +1,56 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
-import LoginScreen_img from '../assets/images/casual_dog.png';
-import iconGoogle from '../assets/images/Google.png';
+import { globalStyles } from '../styles/globalStyles';
+import loginIllustration from '../assets/images/casual_dog.png';
+import googleIcon from '../assets/images/Google.png';
 
 export default function LoginScreen({ navigation }) {
 
   return (
-    <View style={styles.container}>
+    <View style={globalStyles.container}>
       <Image
-        source={LoginScreen_img}
-        style={styles.LoginScreen_img}
+        source={loginIllustration}
+        style={styles.illustration}
       />
-      <Text style={styles.title}>Ótimo dia!</Text>
-      <Text style={styles.subtitle}>Como deseja acessar?</Text>
+      <Text style={globalStyles.title}>Ótimo dia!</Text>
+      <Text style={globalStyles.subtitle}>Como deseja acessar?</Text>
 
-      <TouchableOpacity style={styles.buttonAcessar}>
-        <View style={styles.viewAcessar}>
+      <TouchableOpacity style={[globalStyles.button, globalStyles.primaryButton]}>
+        <View style={styles.buttonContent}>
           <Image
-            source={iconGoogle}
-            style={styles.iconGoogle}
+            source={googleIcon}
+            style={styles.googleIcon}
           />
-          <Text style={styles.txtAcessar}>Como deseja acessar?</Text>
+          <Text style={[globalStyles.buttonText, globalStyles.primaryButtonText]}>
+            Acessar com Google
+          </Text>
         </View>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.buttonOpcoes} onPress={() => navigation.navigate('OtherOptions')}>
-        <Text style={styles.txtOpcoes}>Outras opções</Text>
+      <TouchableOpacity
+        style={[globalStyles.button, globalStyles.secondaryButton]}
+        onPress={() => navigation.navigate('OtherOptions')}
+      >
+        <Text style={[globalStyles.buttonText, globalStyles.secondaryButtonText]}>
+          Outras opções
+        </Text>
       </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  LoginScreen_img: {
+  illustration: {
     marginBottom: 20,
   },
-  iconGoogle: {
-    width: 25,
-    height: 25,
-  },
-  viewAcessar: {
+  buttonContent: {
     flexDirection: 'row',
     alignItems: 'center',
-    height: '100%',
-    position: 'relative',
-    paddingLeft: 15,
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  subtitle: {
-    fontSize: 13,
-    color: '#888',
-    marginBottom: 20,
-  },
-  buttonAcessar: {
-    backgroundColor: '#14C871',
-    borderRadius: 5,
-    width: 350,
-    height: 50,
-    marginBottom: 20,
-  },
-  buttonOpcoes: {
-    backgroundColor: '#ffffff',
-    borderRadius: 5,
-    borderWidth: 1.5,
-    borderColor: '#14C871',
-    width: 350,
-    height: 50,
-    alignItems: 'center',
     justifyContent: 'center',
   },
-  txtAcessar: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    fontSize: 15,
-    color: 'white',
-  },
-  txtOpcoes: {
-    fontWeight: 'bold',
-    fontSize: 15,
-    color: 'black',
+  googleIcon: {
+    width: 25,
+    height: 25,
+    marginRight: 10,
   },
 });

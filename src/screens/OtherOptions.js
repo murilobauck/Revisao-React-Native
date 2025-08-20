@@ -1,49 +1,50 @@
 import React from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableWithoutFeedback, Keyboard, TouchableOpacity, Image } from 'react-native';
-import arrow from '../assets/images/arrow.png';
-import iconGoogle from '../assets/images/Google.png';
-import iconFacebook from '../assets/images/Facebook.png';
+import { globalStyles } from '../styles/globalStyles';
+import backArrowIcon from '../assets/images/arrow.png';
+import googleIcon from '../assets/images/Google.png';
+import facebookIcon from '../assets/images/Facebook.png';
 
 export default function OtherOptions({ navigation }) {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <View style={styles.container}>
+      <View style={[globalStyles.container, styles.screenContainer]}>
 
-        <TouchableOpacity style={styles.touchablearrow} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.navigate('Login')}>
           <Image
-            source={arrow}
-            style={styles.imgarrow}
+            source={backArrowIcon}
+            style={styles.backArrowIcon}
           />
         </TouchableOpacity>
 
         <Text style={styles.title}>Acesse</Text>
         <Text style={styles.subtitle}>Insira seus dados!</Text>
 
-        <Text style={styles.inputtitle}>Email:</Text>
-        <TextInput style={styles.input} placeholder="email" keyboardType="default" />
+        <Text style={globalStyles.inputLabel}>Email:</Text>
+        <TextInput style={globalStyles.input} placeholder="seu.email@exemplo.com" keyboardType="email-address" />
 
-        <Text style={styles.inputtitle}>Senha:</Text>
-        <TextInput style={styles.input} placeholder="senha" keyboardType="default" />
+        <Text style={globalStyles.inputLabel}>Senha:</Text>
+        <TextInput style={globalStyles.input} placeholder="********" secureTextEntry={true} />
 
-        <View style={styles.viewbutton}>
-          <TouchableOpacity style={styles.button1}>
-            <Text style={styles.buttontxt1}>Login</Text>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={[globalStyles.button, globalStyles.primaryButton, styles.halfWidthButton]}>
+            <Text style={[globalStyles.buttonText, globalStyles.primaryButtonText]}>Login</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.button2}>
-            <Text style={styles.buttontxt2}>Cadastre-se</Text>
+          <TouchableOpacity style={[globalStyles.button, styles.secondaryRegisterButton, styles.halfWidthButton]}>
+            <Text style={[globalStyles.buttonText, globalStyles.secondaryButtonText]}>Cadastre-se</Text>
           </TouchableOpacity>
         </View>
 
-        <Text style={styles.outros}>Outras maneiras de entrar:</Text>
+        <Text style={styles.separatorText}>Outras maneiras de entrar:</Text>
 
-        <View style={styles.viewimg}>
-          <Image
-            source={iconGoogle}
-          />
-          <Image
-            source={iconFacebook}
-          />
+        <View style={styles.socialIconsContainer}>
+          <TouchableOpacity>
+            <Image source={googleIcon} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={facebookIcon} />
+          </TouchableOpacity>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -51,101 +52,54 @@ export default function OtherOptions({ navigation }) {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'left',
-    paddingLeft: 30,
-    paddingTop: 60,
-    paddingRight: 30,
-    paddingBottom: 50,
+  screenContainer: {
+    justifyContent: 'flex-start',
+    alignItems: 'stretch',
+    paddingTop: 80,
   },
-
-  touchablearrow: {
+  backButton: {
     position: 'absolute',
-    paddingLeft: 30,
-    paddingTop: 20,
-    paddingRight: 30,
-    paddingBottom: 50,
+    top: 40,
+    left: 20,
+    zIndex: 1,
   },
-
-  imgarrow: {
-    height: '30',
-    width: '30',
+  backArrowIcon: {
+    height: 30,
+    width: 30,
   },
-
-  viewbutton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: '40',
-    paddingTop: '30',
-    gap: 10,
-  },
-
   title: {
     fontSize: 40,
     fontWeight: 'bold',
     marginBottom: 10,
   },
-
   subtitle: {
     fontSize: 18,
     color: '#888',
     marginBottom: 20,
   },
-
-  inputtitle: {
-    paddingBottom: 5,
-    paddingTop: 10,
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 30,
+    marginBottom: 40,
   },
-
-  input: {
+  halfWidthButton: {
+    width: '48%',
     height: 55,
-    width: 350,
+    marginBottom: 0,
+  },
+  secondaryRegisterButton: {
     backgroundColor: '#f0f0f0ff',
-    borderRadius: 5,
-    paddingLeft: 5,
   },
-
-  button1: {
-    backgroundColor: '#14C871',
-    borderRadius: 5,
-    width: 170,
-    height: 55,
-    alignItems: 'center',
-    justifyContent: 'center',
+  separatorText: {
+    fontSize: 15,
+    alignSelf: 'center',
+    color: '#888',
   },
-
-  buttontxt1: {
-    fontWeight: 'bold',
-    fontSize: 14,
-    color: 'white',
-  },
-
-  button2: {
-    backgroundColor: '#f0f0f0ff',
-    borderRadius: 5,
-    width: 170,
-    height: 55,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
-  buttontxt2: {
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
-
-  viewimg: {
+  socialIconsContainer: {
     flexDirection: 'row',
     gap: 20,
     justifyContent: 'center',
-    paddingTop: 40,
-  },
-
-  outros: {
-    fontSize: 15,
-    alignSelf: 'center',
+    marginTop: 20,
   },
 });
