@@ -6,14 +6,14 @@ import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, StatusBar } fro
 export default function LoginScreen() {
   const navigation = useNavigation();
 
-// Para o ícone do Google, a melhor prática é usar uma biblioteca como react-native-vector-icons
-// Por simplicidade, aqui usaremos um Text, mas abaixo explico como usar um ícone real.
+  // Para o ícone do Google, a melhor prática é usar uma biblioteca como react-native-vector-icons
+  // Por simplicidade, aqui usaremos um Text, mas abaixo explico como usar um ícone real.
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
-        
+
         {/* Títulos de boas-vindas */}
         <Text style={styles.title}>Ótimo dia!</Text>
         <Text style={styles.subtitle}>Como deseja acessar?</Text>
