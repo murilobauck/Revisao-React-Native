@@ -1,98 +1,96 @@
-// Arquivo: LoginScreen.js
 import React from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, View, Text, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
+import LoginScreen_img from '../assets/images/casual_dog.png';
+import iconGoogle from '../assets/images/Google.png';
 
-export default function LoginScreen() {
-  const navigation = useNavigation();
-
-  // Para o ícone do Google, a melhor prática é usar uma biblioteca como react-native-vector-icons
-  // Por simplicidade, aqui usaremos um Text, mas abaixo explico como usar um ícone real.
+export default function LoginScreen({ navigation }) {
 
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="dark-content" />
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <Image
+        source={LoginScreen_img}
+        style={styles.LoginScreen_img}
+      />
+      <Text style={styles.title}>Ótimo dia!</Text>
+      <Text style={styles.subtitle}>Como deseja acessar?</Text>
 
-        {/* Títulos de boas-vindas */}
-        <Text style={styles.title}>Ótimo dia!</Text>
-        <Text style={styles.subtitle}>Como deseja acessar?</Text>
+      <TouchableOpacity style={styles.buttonAcessar}>
+        <View style={styles.viewAcessar}>
+          <Image
+            source={iconGoogle}
+            style={styles.iconGoogle}
+          />
+          <Text style={styles.txtAcessar}>Como deseja acessar?</Text>
+        </View>
+      </TouchableOpacity>
 
-        {/* Botão de Login com Google */}
-        <TouchableOpacity style={[styles.button, styles.googleButton]}>
-          <View style={styles.buttonContent}>
-            {/* Placeholder para o ícone do Google */}
-            <Text style={styles.googleIcon}>G</Text>
-            <Text style={styles.googleButtonText}>Acessar com Google</Text>
-          </View>
-        </TouchableOpacity>
-
-        {/* Botão de Outras Opções */}
-        <TouchableOpacity style={[styles.button, styles.otherOptionsButton]}>
-          <Text style={styles.otherOptionsButtonText}>Outras opções</Text>
-        </TouchableOpacity>
-
-      </View>
-    </SafeAreaView>
+      <TouchableOpacity style={styles.buttonOpcoes} onPress={() => navigation.navigate('OtherOptions')}>
+        <Text style={styles.txtOpcoes}>Outras opções</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-// Estilos para os componentes da tela
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#f7f8fa', // Um cinza bem claro para o fundo
-  },
   container: {
     flex: 1,
-    justifyContent: 'center', // Centraliza o conteúdo verticalmente
-    alignItems: 'center',     // Centraliza o conteúdo horizontalmente
-    paddingHorizontal: 30,     // Adiciona um espaçamento nas laterais
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  LoginScreen_img: {
+    marginBottom: 20,
+  },
+  iconGoogle: {
+    width: 25,
+    height: 25,
+  },
+  viewAcessar: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: '100%',
+    position: 'relative',
+    paddingLeft: 15,
   },
   title: {
-    fontSize: 32,
+    fontSize: 30,
     fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 8,
+    marginBottom: 10,
   },
   subtitle: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 40, // Espaço maior antes dos botões
+    fontSize: 13,
+    color: '#888',
+    marginBottom: 20,
   },
-  button: {
-    width: '100%',
-    paddingVertical: 15,
-    borderRadius: 12, // Bordas mais arredondadas
-    alignItems: 'center',
-    marginBottom: 15,
+  buttonAcessar: {
+    backgroundColor: '#14C871',
+    borderRadius: 5,
+    width: 350,
+    height: 50,
+    marginBottom: 20,
   },
-  googleButton: {
-    backgroundColor: '#00c853', // Verde vibrante similar ao da imagem
-  },
-  buttonContent: {
-    flexDirection: 'row', // Alinha o ícone e o texto na horizontal
-    alignItems: 'center',
-  },
-  googleIcon: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginRight: 15, // Espaço entre o ícone e o texto
-  },
-  googleButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '500',
-  },
-  otherOptionsButton: {
-    backgroundColor: 'transparent',
+  buttonOpcoes: {
+    backgroundColor: '#ffffff',
+    borderRadius: 5,
     borderWidth: 1.5,
-    borderColor: '#00c853', // Borda com a mesma cor do botão principal
+    borderColor: '#14C871',
+    width: 350,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  otherOptionsButtonText: {
-    color: '#00c853', // Texto com a mesma cor da borda
-    fontSize: 16,
-    fontWeight: '500',
+  txtAcessar: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: 'white',
+  },
+  txtOpcoes: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: 'black',
   },
 });
