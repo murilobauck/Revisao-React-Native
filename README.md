@@ -1,6 +1,6 @@
 # Revisão React Native - App de Navegação
 
-Um aplicativo móvel desenvolvido em React Native que demonstra navegação entre telas utilizando React Navigation. O app apresenta uma interface simples e moderna para login e seleção de opções, com navegação fluida e componentes estilizados.
+Um aplicativo móvel desenvolvido em React Native que demonstra navegação entre telas utilizando React Navigation.
 
 ---
 
