@@ -19,12 +19,16 @@ O projeto está organizado da seguinte forma:
 
 ```
 src/
-├── App.js                 # Componente principal com navegação
-├── screens/               # Telas da aplicação
-│   ├── LoginScreen.js     # Tela de login
-│   └── OtherOptions.js    # Tela de outras opções
-├── assets/                # Imagens e ícones utilizados
-│   └── images/            # Imagens do app
+├── App.js              # Componente principal com navegação
+├── screens/            # Pasta para todas as telas da aplicação
+│   ├── LoginScreen.js    # Tela de login inicial
+│   └── OtherOptions.js   # Tela de login com email/senha
+│
+├── assets/             # Pasta para todos os recursos estáticos
+│   └── images/           # Pasta específica para imagens e ícones
+│
+└── styles/             # Pasta para os estilos do aplicativo
+    └── globalStyles.js   # Arquivo com os estilos globais e reutilizáveis
 ```
 
 ### Componentes Principais
@@ -61,14 +65,15 @@ src/
 - **Botão para outras opções**
 
 ### Other Options Screen
-- **Tela para seleção de opções adicionais** (implemente conforme sua necessidade)
+- **Tela para seleção de opções adicionais**
+- **Área de login**
 
 ---
 
 ## 🎨 Sistema de Estilos
 
 - Estilos definidos via `StyleSheet` para componentes
-- Cores e espaçamentos padronizados
+- Cores e espaçamentos padronizados no arquivo `globalStyles.js`
 
 ---
 
